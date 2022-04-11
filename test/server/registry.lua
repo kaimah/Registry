@@ -88,7 +88,6 @@ end
 
 function RegistryTests:VirtualRegistry()
     local assets = Registry.buildVirtualRegistry("Assets", ReplicatedStorage.assets, true)
-    print(assets.__registry)
 
     local axeSwingSound = assets:lookup("sounds/axe/swing")
     return axeSwingSound

@@ -6,6 +6,3 @@ license = "MIT"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 exclude = ["test", "test.project.json", "docs", "DevPackages", "build"]
-
-[dev-dependencies]
-testez = "roblox/testez@0.4.1"
