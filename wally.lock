@@ -3,8 +3,8 @@
 registry = "test"
 
 [[package]]
-name = "kyrethia/registry"
-version = "1.0.0"
+name = "kairamah/registry"
+version = "1.1.0"
 dependencies = []
 
 [[package]]
