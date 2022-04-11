@@ -357,10 +357,21 @@ end
 
     @param name string
     @return Registry?
-    Returns a registry given its name.
 ]=]
 function RegistryModule.get(name: string): Registry?
     return allRegistries[name];
+end
+
+--[=[
+    @function remove
+    @within RegistryModule
+
+    @param name string
+]=]
+function RegistryModule.remove(name: string)
+    if allRegistries[name] then
+        allRegistries[name] = nil;
+    end
 end
 
 --[=[
