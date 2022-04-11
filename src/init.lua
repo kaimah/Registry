@@ -167,19 +167,6 @@ end
     @return SearchResult
 
     Checks each element within the current search directory against SearchIndex. See the SearchIndex type for more information.
-
-    ```lua
-    local items = Registry.new("Items", {
-        melee = {
-            axes = {
-                { name = "stoneAxe", quantity = 1 }
-            }
-        }
-    })
-
-    -- returns the data table for the stone axe
-    local stoneAxeData = items:search("melee/axes"):with({ name = "stoneAxe" }):get()
-    ```
 ]=]
 function SearchResult:with(searchIndex: table): SearchResult
     if type(searchIndex) ~= "table" then
@@ -405,7 +392,7 @@ function RegistryModule.buildVirtualRegistry(name: string, instance: Instance, r
         assert(type(recursive) == "boolean");
     end
 
-    local registry = { ref = instance };
+    local registry = { __ref = instance };
     
     local function recurse(currentDirectory: table, target: Instance)
         for _, child in pairs(target:GetChildren()) do
@@ -452,23 +439,6 @@ end
     Paths directly to the index in the registry. and returns the first value it finds. If you include `any` in part of the path,
     the search will begin to look through all descendants from that point. Therefore, it is only recommended  to use `any` as
     the second-to-last part of the path.
-
-    ```lua
-    local items = Registry.new("Items", {
-        melee = {
-            axes = {
-                stoneAxe = { quantity = 1 }
-            },
-
-            swords = {
-                stoneSword = { quantity = 1 }
-            }
-        }
-    })
-
-    -- will return the stoneAxe data, but stoneSword was also considered in the search process due to the `any` tag.
-    local stoneAxeData = items:lookup("melee/any/stoneAxe")
-    ```
 ]=]
 function Registry:lookup(path: string): any?
     local pathElements = if path then splitPath(path) else {};
