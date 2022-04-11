@@ -12,6 +12,8 @@ type RegistryModule = {
     new: (registryName: string, initial: table, immutable: boolean?) -> Registry;
     buildVirtualRegistry: (name: string, instance: Instance, recursive: boolean?) -> Registry;
     remove: (name: string) -> ();
+
+    searchFrom: (directory: table) -> SearchResult;
 };
 
 --[=[
@@ -268,13 +270,15 @@ function SearchResult:forEach(callback: (key: RegistryKey, value: any, exclude: 
     local currentSubjects = self.__currentSubjects or self.__directory;
 
     for key: RegistryKey, value: any in pairs(currentSubjects) do
-        local function exclude()
+        callback(key, value, function()
             if currentSubjects[key] then
-                currentSubjects[key] = nil;
+                if getTableType(currentSubjects) == "array" then
+                    table.remove(currentSubjects, key);
+                else
+                    currentSubjects[key] = nil;
+                end
             end
-        end
-
-        callback(key, value, exclude);
+        end);
     end
 
     return self :: SearchResult;
@@ -419,6 +423,22 @@ function RegistryModule.buildVirtualRegistry(name: string, instance: Instance, r
     return registry;
 end
 
+--[=[
+    @function searchFrom
+    @within RegistryModule
+
+    @param directory table
+    @return SearchResult
+
+    Creates a new search result from a given table instead of a path in a registry. This allows you to expose tables outside of the registry
+    into the search result system.
+]=]
+function Registry:searchFrom(directory: table): SearchResult
+    assert(type(directory) == "table");
+
+    return SearchResult.new(directory);
+end
+
 --[[ -- Registry -- ]] --
 
 --[=[
@@ -509,6 +529,7 @@ function Registry:search(path: string): SearchResult
     local activeDirectory = self:lookup(path);
 
     if activeDirectory then
+        assert(type(activeDirectory) == "table");
         return SearchResult.new(activeDirectory);
     end
 

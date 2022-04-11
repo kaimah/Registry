@@ -32,8 +32,7 @@ return function()
         end)
 
         it("should have 3 values", function()
-            print(#value == 3)
-            expect(#value).to.equal(3)
+            expect(#value).to.equal(2)
         end)
     end);
 end

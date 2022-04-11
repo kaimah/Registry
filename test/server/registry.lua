@@ -62,13 +62,21 @@ function RegistryTests:AdvancedSearch()
         }
     })
     
-    local itemsOverHalfDurability = registry:search("kyrethia/inventory"):forEach(function(key, value, exclude)
-        if value.metadata then
-            
-        else
+    local itemsOverHalfDurability = registry:search("kyrethia/inventory")
+        :with({"metadata"})
+        :forEach(function(key, value, exclude)
+            local durability = value.metadata.durability
+            if durability then
+                if durability > 50 then
+                    return;
+                end
+            end
+
+            -- if we cannot verify the value as what we want, exclude it
             exclude()
-        end
-    end):get()
+
+        end)
+        :get()
 
     Registry.remove("PlayerData3");
 
