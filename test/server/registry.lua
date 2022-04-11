@@ -9,36 +9,40 @@ function RegistryTests:SimpleLookup()
             money = 5;
             level = 3;
             xp = 2;
-
+    
             inventory = {
-                stoneAxe = 1
+                stoneAxe = 1,
+                log = 34
             }
         }
     })
-
-    local stoneAxeData = registry:lookup("kyrethia/inventory/stoneAxe");
+    
+    local numLogs = registry:lookup("kyrethia/inventory/log");
+    --print(numLogs);
     Registry.remove("PlayerData");
     
-    return stoneAxeData;
+    return numLogs;
 end
 
 function RegistryTests:IntermediateSearch()
-    local registry = Registry.new("PlayerData", {
+    local registry = Registry.new("PlayerData2", {
         kyrethia = {
             money = 5;
             level = 3;
             xp = 2;
-
+    
             inventory = {
-                { name = "stoneAxe", quantity = 1 }
+                { name = "stoneAxe", quantity = 1 },
+                { name = "log", quantity = 34 }
             }
         }
     })
-
-    local stoneAxeData = registry:search("kyrethia/inventory"):with({ name = "stoneAxe" }):getFirst();
-    Registry.remove("PlayerData");
     
-    return stoneAxeData;
+    local logData = registry:search("kyrethia/inventory"):with({name = "log"}):getFirst();
+    --print(logData.quantity);
+    Registry.remove("PlayerData2");
+    
+    return logData;
 end
 
 function RegistryTests:AdvancedLookup()
