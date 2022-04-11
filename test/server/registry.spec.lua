@@ -35,4 +35,12 @@ return function()
             expect(#value).to.equal(2)
         end)
     end);
+
+    describe("virtualRegistry", function()
+        local value = Test:VirtualRegistry();
+
+        it("should return an instance", function()
+            expect(value).to.be.a("userdata")
+        end)
+    end);
 end

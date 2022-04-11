@@ -394,6 +394,8 @@ end
     @return Registry
 
     Builds a registry from an instance and its children. If `recursive` is set to true, it will include all of its descendants.
+
+    Recursive is set to `true` by default.
 ]=]
 function RegistryModule.buildVirtualRegistry(name: string, instance: Instance, recursive: boolean?): Registry
     assert(type(name) == "string");
@@ -418,7 +420,7 @@ function RegistryModule.buildVirtualRegistry(name: string, instance: Instance, r
 
     recurse(registry, instance);
 
-    registry = RegistryModule.new(name, registry, false);
+    registry = RegistryModule.new(name, registry, if (recursive ~= nil) then recursive else true);
 
     return registry;
 end

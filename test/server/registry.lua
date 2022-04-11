@@ -62,25 +62,35 @@ function RegistryTests:AdvancedSearch()
         }
     })
     
+    local function checkDurability(key, itemData, exclude)
+        local durability = itemData.metadata.durability
+        if durability then
+            if durability > 50 then
+                return;
+            end
+        end
+    
+        -- if we cannot verify the value as what we want, exclude it
+        exclude()
+    end
+    
     local itemsOverHalfDurability = registry:search("kyrethia/inventory")
         :with({"metadata"})
-        :forEach(function(key, value, exclude)
-            local durability = value.metadata.durability
-            if durability then
-                if durability > 50 then
-                    return;
-                end
-            end
-
-            -- if we cannot verify the value as what we want, exclude it
-            exclude()
-
-        end)
+        :forEach(checkDurability)
         :get()
-
-    Registry.remove("PlayerData3");
+    
+    for _, item in pairs(itemsOverHalfDurability) do
+        print(item.name)
+    end
 
     return itemsOverHalfDurability;
+end
+
+function RegistryTests:VirtualRegistry()
+    local assets = Registry.buildVirtualRegistry("Assets", ReplicatedStorage.assets, true)
+
+    local axeSwingSound = assets:lookup("sounds/axe/swing")
+    return axeSwingSound
 end
 
 return RegistryTests
