@@ -43,7 +43,7 @@ type SearchResult = {
     with: (searchIndex: Array<string> | Dictionary<any>) -> SearchResult;
     is: (searchValue: any) -> SearchResult;
     forEach: (key: RegistryKey, value: any) -> ();
-    get: () -> {any}?;
+    get: () -> {[string | number]: any}?;
     getFirst: () -> any?;
 
     __currentSubjects: table?;
@@ -258,29 +258,11 @@ end
     @return SearchResult
     
     Loops over the current search directory and runs the given callback on every element. This is especially useful for implementing your own
-    logic (ex. checking if a value is greater than or less than a certain value.)
+    logic (ex. checking if a value is greater than or less than a certain value.).
 
-    In the future, this will support "resolving" an element and allowing you to continue the search chain with the elements you enacted
-    logic upon.
-
-    ```lua
-    local items = Registry.new("Items", {
-        melee = {
-            axes = {
-                { name = "stoneAxe", durability = 40 },
-                { name = "stoneAxe", durability = 60 }
-                { name = "stoneAxe", durability = 80 }
-            }
-        }
-    })
-
-    -- returns the data table for the stone axe
-    local stoneAxeData = items:search("melee/axes"):forEach(function(i, axeData)
-        if axeData.durability > 50 then
-            -- Run code on axes with above 50 durability
-        end
-    end)
-    ```
+    The callback function is supplied with an `exclude` function. By default, calling forEach() will not alter the search results. Instead,
+    the loop uses a blacklist that will keep all search results until you call `exclude` on a key, which will remove it from the results.
+    See Examples for more practical usage.
 ]=]
 function SearchResult:forEach(callback: (key: RegistryKey, value: any) -> ()): SearchResult
     local currentSubjects = self.__currentSubjects or self.__directory;
@@ -296,13 +278,12 @@ end
     @function get
     @within SearchResult
 
-    @return {any}?
+    @return {[string | number]: any}?
     Returns the current search directory. After calling this, the search result is exhausted and can no longer be chained. This will always return
     a table of all search results.
 ]=]
-function SearchResult:get(): {any}?
+function SearchResult:get(): {[string | number]: any}?
     local toReturn = self.__currentSubjects or self.__directory;
-    self = nil;
 
     return toReturn;
 end
@@ -316,7 +297,12 @@ end
     this will always return only the first search result it finds.
 ]=]
 function SearchResult:getFirst(): any?
-    return self:get()[1];
+    local get = self:get();
+    if get then
+        for _, value in pairs(get) do
+            return value;
+        end
+    end
 end
 
 --[[ ----- ]] --
