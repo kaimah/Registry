@@ -35,7 +35,7 @@ function RegistryTests:IntermediateSearch()
         }
     })
 
-    local stoneAxeData = registry:search("kyrethia/inventory"):with({ name = "stoneAxe" }):get()[1];
+    local stoneAxeData = registry:search("kyrethia/inventory"):with({ name = "stoneAxe" }):getFirst();
     Registry.remove("PlayerData");
     
     return stoneAxeData;

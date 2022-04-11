@@ -43,7 +43,8 @@ type SearchResult = {
     with: (searchIndex: Array<string> | Dictionary<any>) -> SearchResult;
     is: (searchValue: any) -> SearchResult;
     forEach: (key: RegistryKey, value: any) -> ();
-    get: () -> any;
+    get: () -> {any}?;
+    getFirst: () -> any?;
 
     __currentSubjects: table?;
     __directory: table;
@@ -297,13 +298,25 @@ end
 
     @return {any}?
     Returns the current search directory. After calling this, the search result is exhausted and can no longer be chained. This will always return
-    a table.
+    a table of all search results.
 ]=]
-function SearchResult:get(): any?
+function SearchResult:get(): {any}?
     local toReturn = self.__currentSubjects or self.__directory;
     self = nil;
 
     return toReturn;
+end
+
+--[=[
+    @function getFirst
+    @within SearchResult
+
+    @return any?
+    Returns the current search directory. After calling this, the search result is exhausted and can no longer be chained. As opposed to :get(),
+    this will always return only the first search result it finds.
+]=]
+function SearchResult:getFirst(): any?
+    return self:get()[1];
 end
 
 --[[ ----- ]] --
