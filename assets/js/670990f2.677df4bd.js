@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[493],{97868:function(s){s.exports=JSON.parse('{"sourceUrl":"https://github.com/kairamah/Registry/blob/main","baseUrl":"/Registry/","classOrder":[],"apiCategories":[]}')}}]);
