@@ -45,8 +45,34 @@ function RegistryTests:IntermediateSearch()
     return logData;
 end
 
-function RegistryTests:AdvancedLookup()
+function RegistryTests:AdvancedSearch()
+    local registry = Registry.new("PlayerData3", {
+        kyrethia = {
+            money = 5;
+            level = 3;
+            xp = 2;
     
+            inventory = {
+                { name = "stoneAxe", quantity = 1, metadata = { durability = 35 } },
+                { name = "stonePickaxe", quantity = 1, metadata = { durability = 78 } },
+                { name = "stoneSword", quantity = 1, metadata = { durability = 64 } },
+    
+                { name = "logs", quantity = 34 }
+            }
+        }
+    })
+    
+    local itemsOverHalfDurability = registry:search("kyrethia/inventory"):forEach(function(key, value, exclude)
+        if value.metadata then
+            
+        else
+            exclude()
+        end
+    end):get()
+
+    Registry.remove("PlayerData3");
+
+    return itemsOverHalfDurability;
 end
 
 return RegistryTests

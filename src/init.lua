@@ -254,21 +254,27 @@ end
     @function forEach
     @within SearchResult
 
-    @param callback (key: string | number, value: any) -> ()
+    @param callback (key: string | number, value: any, exclude: () -> ()) -> ()
     @return SearchResult
     
     Loops over the current search directory and runs the given callback on every element. This is especially useful for implementing your own
     logic (ex. checking if a value is greater than or less than a certain value.).
 
     The callback function is supplied with an `exclude` function. By default, calling forEach() will not alter the search results. Instead,
-    the loop uses a blacklist that will keep all search results until you call `exclude` on a key, which will remove it from the results.
+    the loop uses a blacklist that will keep all search results until you call `exclude`, which will remove the element from the results.
     See Examples for more practical usage.
 ]=]
-function SearchResult:forEach(callback: (key: RegistryKey, value: any) -> ()): SearchResult
+function SearchResult:forEach(callback: (key: RegistryKey, value: any, exclude: () -> ()) -> ()): SearchResult
     local currentSubjects = self.__currentSubjects or self.__directory;
 
     for key: RegistryKey, value: any in pairs(currentSubjects) do
-        callback(key, value);
+        local function exclude()
+            if currentSubjects[key] then
+                currentSubjects[key] = nil;
+            end
+        end
+
+        callback(key, value, exclude);
     end
 
     return self :: SearchResult;
