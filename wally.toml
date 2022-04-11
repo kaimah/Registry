@@ -7,4 +7,5 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 exclude = ["test", "test.project.json"]
 
-[dependencies]
+[dev-dependencies]
+testez = "roblox/testez@0.4.1"

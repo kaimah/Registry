@@ -6,6 +6,10 @@
 			"$className": "ReplicatedStorage",
 			"Registry": {
 				"$path": "src"
+			},
+
+			"DevPackages": {
+				"$path": "DevPackages"
 			}
 		},
 		"ServerScriptService": {
