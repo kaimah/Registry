@@ -11,6 +11,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 type RegistryModule = {
     new: (registryName: string, initial: table, immutable: boolean?) -> Registry;
     buildVirtualRegistry: (name: string, instance: Instance, recursive: boolean?) -> Registry;
+    remove: (name: string) -> ();
 };
 
 --[=[

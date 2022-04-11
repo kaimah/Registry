@@ -17,12 +17,13 @@ function RegistryTests:SimpleLookup()
     })
 
     local stoneAxeData = registry:lookup("kyrethia/inventory/stoneAxe");
+    Registry.remove("PlayerData");
     
     return stoneAxeData;
 end
 
 function RegistryTests:IntermediateSearch()
-    local registry = Registry.new("PlayerData2", {
+    local registry = Registry.new("PlayerData", {
         kyrethia = {
             money = 5;
             level = 3;
@@ -35,6 +36,8 @@ function RegistryTests:IntermediateSearch()
     })
 
     local stoneAxeData = registry:search("kyrethia/inventory"):with({ name = "stoneAxe" }):get()[1];
+    Registry.remove("PlayerData");
+    
     return stoneAxeData;
 end
 

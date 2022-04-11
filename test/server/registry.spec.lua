@@ -8,7 +8,7 @@ return function()
         end)
     end);
 
-    --[[describe("intermediateLookup", function()
+    describe("intermediateLookup", function()
         it("should return a table", function()
             local value = Test:IntermediateSearch();
             expect(type(value) == "table").to.be.ok();
@@ -18,6 +18,11 @@ return function()
             local value = Test:IntermediateSearch();
             expect(value.name == "stoneAxe").to.be.ok();
         end)
-    end);--]]
+
+        it("should have a key 'quantity' equal to 1", function()
+            local value = Test:IntermediateSearch();
+            expect(value.quantity == 1).to.be.ok();
+        end)
+    end);
     
 end
