@@ -75,7 +75,7 @@ local function splitPath(path: string): Array<string>
     return elements;
 end
 
-local function getstring(t: table): string
+local function getTableType(t: table): string
     if type(t) ~= "table" then return "unknown" end;
 
     local function isEmpty(): boolean
@@ -183,7 +183,7 @@ function SearchResult:with(searchIndex: table): SearchResult
     if type(searchIndex) ~= "table" then
         return self :: SearchResult;
     else
-        if (not getstring(searchIndex) == "array") or (not getstring(searchIndex)) then
+        if (not getTableType(searchIndex) == "array") or (not getTableType(searchIndex)) then
             return self :: SearchResult;
         end
     end
@@ -198,7 +198,7 @@ function SearchResult:with(searchIndex: table): SearchResult
             if type(value) == "table" then
                 local isValid = true;
                 for searchKey, searchValue in pairs(searchIndex) do
-                    if getstring(searchIndex) == "array" then
+                    if getTableType(searchIndex) == "array" then
                         if not value[searchValue] then
                             isValid = false;
                             break;
@@ -347,7 +347,7 @@ local allRegistries = {};
 function RegistryModule.new(name: string, initial: table, immutable: boolean?): Registry
     assert(type(initial) == "table", "Cannot create a Registry from " .. tostring(initial) .. " - it is not a table!");
     assert(not allRegistries[name], "A Registry with the name " .. name .. " already exists!");
-    --assert((getstring(initial) ~= "mixed"), "Initial registry cannot be a mixed table.");
+    --assert((getTableType(initial) ~= "mixed"), "Initial registry cannot be a mixed table.");
 
     local self = setmetatable({
         name = name;
@@ -471,7 +471,7 @@ function Registry:lookup(path: string): any?
         end
 
         for key, value in pairs(currentDirectory) do
-            local stringKey = if getstring(currentDirectory) == "array" then tostring(value) else tostring(key);
+            local stringKey = if getTableType(currentDirectory) == "array" then tostring(value) else tostring(key);
 
             if forcedSearchValue then
                 if stringKey == forcedSearchValue then
