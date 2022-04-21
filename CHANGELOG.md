@@ -1,3 +1,16 @@
+## 1.4.0
+
+- Updated naming conventions
+
+## 1.3.0
+
+- Changed registry location
+- Changed username
+
+## 1.2.0
+
+- Added documentation
+
 ## 1.1.0
 
 - Added `RegistryModule.remove()`
@@ -5,7 +18,6 @@
 - Added `SearchResult:getFirst()`
 
 - Added `exclude` parameter in `SearchResult:forEach()` callback
--
 
 ## 1.0.0
 

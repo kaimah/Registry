@@ -10,10 +10,10 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 ]=]
 type RegistryModule = {
     new: (registryName: string, initial: table, immutable: boolean?) -> Registry;
-    buildVirtualRegistry: (name: string, instance: Instance, recursive: boolean?) -> Registry;
-    remove: (name: string) -> ();
 
-    searchFrom: (directory: table) -> SearchResult;
+    BuildVirtualRegistry: (name: string, instance: Instance, recursive: boolean?) -> Registry;
+    Remove: (name: string) -> ();
+    SearchFrom: (directory: table) -> SearchResult;
 };
 
 --[=[
@@ -349,30 +349,30 @@ function RegistryModule.new(name: string, initial: table, immutable: boolean?): 
 end
 
 --[=[
-    @function get
+    @function Get
     @within RegistryModule
 
     @param name string
     @return Registry?
 ]=]
-function RegistryModule.get(name: string): Registry?
+function RegistryModule:Get(name: string): Registry?
     return allRegistries[name];
 end
 
 --[=[
-    @function remove
+    @function Remove
     @within RegistryModule
 
     @param name string
 ]=]
-function RegistryModule.remove(name: string)
+function RegistryModule:Remove(name: string)
     if allRegistries[name] then
         allRegistries[name] = nil;
     end
 end
 
 --[=[
-    @function buildVirtualRegistry
+    @function BuildVirtualRegistry
     @within RegistryModule
 
     @param name string
@@ -384,7 +384,7 @@ end
 
     Recursive is set to `true` by default.
 ]=]
-function RegistryModule.buildVirtualRegistry(name: string, instance: Instance, recursive: boolean?): Registry
+function RegistryModule:BuildVirtualRegistry(name: string, instance: Instance, recursive: boolean?): Registry
     assert(type(name) == "string");
     assert(type(instance) == "userdata");
     
@@ -422,7 +422,7 @@ end
     Creates a new search result from a given table instead of a path in a registry. This allows you to expose tables outside of the registry
     into the search result system.
 ]=]
-function Registry:searchFrom(directory: table): SearchResult
+function RegistryModule:SearchFrom(directory: table): SearchResult
     assert(type(directory) == "table");
 
     return SearchResult.new(directory);
