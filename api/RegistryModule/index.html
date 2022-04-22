@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.0-beta.9">
 <title data-react-helmet="true">RegistryModule | Registry</title><meta data-react-helmet="true" property="og:title" content="RegistryModule | Registry"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="description" content="The entry point for the registry system."><meta data-react-helmet="true" property="og:description" content="The entry point for the registry system."><meta data-react-helmet="true" property="og:url" content="https://kyrethia.github.io/Registry/api/RegistryModule"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://kyrethia.github.io/Registry/api/RegistryModule"><link data-react-helmet="true" rel="alternate" href="https://kyrethia.github.io/Registry/api/RegistryModule" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://kyrethia.github.io/Registry/api/RegistryModule" hreflang="x-default"><link rel="stylesheet" href="/Registry/assets/css/styles.57777432.css">
-<link rel="preload" href="/Registry/assets/js/runtime~main.ea4f3809.js" as="script">
-<link rel="preload" href="/Registry/assets/js/main.c5154f21.js" as="script">
+<link rel="preload" href="/Registry/assets/js/runtime~main.b498201f.js" as="script">
+<link rel="preload" href="/Registry/assets/js/main.f85509a6.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -17,8 +17,8 @@
   Creates a new registry. Please note that the <code>initial</code> table may be any table so long as it has numeric or string keys.
   If <code>immutable</code> is set to true, you will not be able to modify the registry.
 </p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="get"><code style="text-decoration:none">get</code><a aria-hidden="true" class="hash-link" href="#get" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L358"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">get</code><code>(</code><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Registry/api/Registry">Registry?</a></code></div><div></div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="remove"><code style="text-decoration:none">remove</code><a aria-hidden="true" class="hash-link" href="#remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L368"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">remove</code><code>(</code><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>) → </code><code>(</code><code>)</code></div><div></div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="buildVirtualRegistry"><code style="text-decoration:none">buildVirtualRegistry</code><a aria-hidden="true" class="hash-link" href="#buildVirtualRegistry" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L387"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">buildVirtualRegistry</code><code>(</code><div class="inset_2cJr"><div><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code></div><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code></div><div><code>recursive<!-- -->: </code><code class="blue_2Afy">boolean?</code></div></div><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Registry/api/Registry">Registry</a></code></div><div>
-<p>Builds a registry from an instance and its children. If <code>recursive</code> is set to true, it will include all of its descendants.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Get"><code style="text-decoration:none">Get</code><a aria-hidden="true" class="hash-link" href="#Get" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L358"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">Get</code><code>(</code><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Registry/api/Registry">Registry?</a></code></div><div></div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="Remove"><code style="text-decoration:none">Remove</code><a aria-hidden="true" class="hash-link" href="#Remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L368"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">Remove</code><code>(</code><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>) → </code><code>(</code><code>)</code></div><div></div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="BuildVirtualTree"><code style="text-decoration:none">BuildVirtualTree</code><a aria-hidden="true" class="hash-link" href="#BuildVirtualTree" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L387"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">BuildVirtualTree</code><code>(</code><div class="inset_2cJr"><div><code>name<!-- -->: </code><code class="blue_2Afy">string</code><code>,</code></div><div><code>instance<!-- -->: </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code></div><div><code>recursive<!-- -->: </code><code class="blue_2Afy">boolean?</code></div></div><code>) → </code><code class="blue_2Afy">table</code></div><div>
+<p>Builds a registry tree from an instance and its children. If <code>recursive</code> is set to true, it will include all of its descendants.</p>
 <p>Recursive is set to <code>true</code> by default.</p>
 </div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="searchFrom"><code style="text-decoration:none">searchFrom</code><a aria-hidden="true" class="hash-link" href="#searchFrom" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/kairamah/Registry/blob/main/src/init.lua#L425"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>RegistryModule<!-- -->.</code><code class="green_3LnD">searchFrom</code><code>(</code><code>directory<!-- -->: </code><code class="blue_2Afy">table</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/Registry/api/SearchResult">SearchResult</a></code></div><div>
 <p>
@@ -60,7 +60,7 @@
             }
         },
         {
-            &quot;name&quot;: &quot;get&quot;,
+            &quot;name&quot;: &quot;Get&quot;,
             &quot;desc&quot;: &quot;&quot;,
             &quot;params&quot;: [
                 {
@@ -82,7 +82,7 @@
             }
         },
         {
-            &quot;name&quot;: &quot;remove&quot;,
+            &quot;name&quot;: &quot;Remove&quot;,
             &quot;desc&quot;: &quot;&quot;,
             &quot;params&quot;: [
                 {
@@ -99,8 +99,8 @@
             }
         },
         {
-            &quot;name&quot;: &quot;buildVirtualRegistry&quot;,
-            &quot;desc&quot;: &quot;Builds a registry from an instance and its children. If `recursive` is set to true, it will include all of its descendants.\n\nRecursive is set to `true` by default.&quot;,
+            &quot;name&quot;: &quot;BuildVirtualTree&quot;,
+            &quot;desc&quot;: &quot;Builds a registry tree from an instance and its children. If `recursive` is set to true, it will include all of its descendants.\n\nRecursive is set to `true` by default.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;name&quot;,
@@ -121,7 +121,7 @@
             &quot;returns&quot;: [
                 {
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;Registry&quot;
+                    &quot;lua_type&quot;: &quot;table&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
@@ -161,8 +161,8 @@
         &quot;line&quot;: 11,
         &quot;path&quot;: &quot;src/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#buildVirtualRegistry" class="table-of-contents__link toc-highlight">.buildVirtualRegistry</a></li><li><a href="#get" class="table-of-contents__link toc-highlight">.get</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li><li><a href="#remove" class="table-of-contents__link toc-highlight">.remove</a></li><li><a href="#searchFrom" class="table-of-contents__link toc-highlight">.searchFrom</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 kyrethia. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/Registry/assets/js/runtime~main.ea4f3809.js"></script>
-<script src="/Registry/assets/js/main.c5154f21.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#BuildVirtualTree" class="table-of-contents__link toc-highlight">.BuildVirtualTree</a></li><li><a href="#Get" class="table-of-contents__link toc-highlight">.Get</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li><li><a href="#Remove" class="table-of-contents__link toc-highlight">.Remove</a></li><li><a href="#searchFrom" class="table-of-contents__link toc-highlight">.searchFrom</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 kyrethia. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/Registry/assets/js/runtime~main.b498201f.js"></script>
+<script src="/Registry/assets/js/main.f85509a6.js"></script>
 </body>
 </html>
