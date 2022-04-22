@@ -11,7 +11,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 type RegistryModule = {
     new: (registryName: string, initial: table, immutable: boolean?) -> Registry;
 
-    BuildVirtualTree: (name: string, instance: Instance, recursive: boolean?) -> Registry;
+    BuildVirtualTree: (instance: Instance, recursive: boolean?) -> Registry;
     Remove: (name: string) -> ();
     SearchFrom: (directory: table) -> SearchResult;
 };
@@ -375,7 +375,6 @@ end
     @function BuildVirtualTree
     @within RegistryModule
 
-    @param name string
     @param instance Instance
     @param recursive boolean?
     @return table
@@ -385,12 +384,7 @@ end
     Recursive is set to `true` by default.
 ]=]
 function RegistryModule:BuildVirtualTree(name: string, instance: Instance, recursive: boolean?): table
-    assert(type(name) == "string");
-    assert(type(instance) == "userdata");
-    
-    if recursive ~= nil then
-        assert(type(recursive) == "boolean");
-    end
+    assert(type(instance) == "userdata", "Tree can only be built from Roblox instances! " .. tostring(instance) .. " is not compatible.");
 
     local tree = { __ref = instance };
     

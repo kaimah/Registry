@@ -1,3 +1,7 @@
+## 2.1.0
+
+- Fixed `RegistryModule:BuildVirtualTree`
+
 ## 2.0.0
 
 - Updating to 2.0 due to breaking changes
