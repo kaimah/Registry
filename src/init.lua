@@ -387,6 +387,7 @@ function RegistryModule:BuildVirtualTree(instance: Instance, recursive: boolean?
     assert(type(instance) == "userdata", "Tree can only be built from Roblox instances! " .. tostring(instance) .. " is not compatible.");
 
     local tree = { __ref = instance };
+    recursive = (if recursive ~= nil then recursive else true);
     
     local function recurse(currentDirectory: table, target: Instance)
         for _, child in pairs(target:GetChildren()) do
