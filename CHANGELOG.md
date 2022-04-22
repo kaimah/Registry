@@ -1,3 +1,9 @@
+## 2.0.0
+
+- Updating to 2.0 due to breaking changes
+- Removed `RegistryModule.buildVirtualRegistry`
+- Added `RegistryModule:BuildVirtualTree`
+
 ## 1.4.0
 
 - Updated naming conventions

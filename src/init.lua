@@ -11,7 +11,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 type RegistryModule = {
     new: (registryName: string, initial: table, immutable: boolean?) -> Registry;
 
-    BuildVirtualRegistry: (name: string, instance: Instance, recursive: boolean?) -> Registry;
+    BuildVirtualTree: (name: string, instance: Instance, recursive: boolean?) -> Registry;
     Remove: (name: string) -> ();
     SearchFrom: (directory: table) -> SearchResult;
 };
@@ -372,19 +372,19 @@ function RegistryModule:Remove(name: string)
 end
 
 --[=[
-    @function BuildVirtualRegistry
+    @function BuildVirtualTree
     @within RegistryModule
 
     @param name string
     @param instance Instance
     @param recursive boolean?
-    @return Registry
+    @return table
 
-    Builds a registry from an instance and its children. If `recursive` is set to true, it will include all of its descendants.
+    Builds a registry tree from an instance and its children. If `recursive` is set to true, it will include all of its descendants.
 
     Recursive is set to `true` by default.
 ]=]
-function RegistryModule:BuildVirtualRegistry(name: string, instance: Instance, recursive: boolean?): Registry
+function RegistryModule:BuildVirtualTree(name: string, instance: Instance, recursive: boolean?): table
     assert(type(name) == "string");
     assert(type(instance) == "userdata");
     
@@ -392,7 +392,7 @@ function RegistryModule:BuildVirtualRegistry(name: string, instance: Instance, r
         assert(type(recursive) == "boolean");
     end
 
-    local registry = { __ref = instance };
+    local tree = { __ref = instance };
     
     local function recurse(currentDirectory: table, target: Instance)
         for _, child in pairs(target:GetChildren()) do
@@ -405,11 +405,11 @@ function RegistryModule:BuildVirtualRegistry(name: string, instance: Instance, r
         end
     end
 
-    recurse(registry, instance);
+    recurse(tree, instance);
 
-    registry = RegistryModule.new(name, registry, if (recursive ~= nil) then recursive else true);
+    --registry = RegistryModule.new(name, registry, if (recursive ~= nil) then recursive else true);
 
-    return registry;
+    return tree;
 end
 
 --[=[
