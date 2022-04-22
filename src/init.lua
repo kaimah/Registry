@@ -383,7 +383,7 @@ end
 
     Recursive is set to `true` by default.
 ]=]
-function RegistryModule:BuildVirtualTree(name: string, instance: Instance, recursive: boolean?): table
+function RegistryModule:BuildVirtualTree(instance: Instance, recursive: boolean?): table
     assert(type(instance) == "userdata", "Tree can only be built from Roblox instances! " .. tostring(instance) .. " is not compatible.");
 
     local tree = { __ref = instance };
